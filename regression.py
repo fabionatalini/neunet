@@ -3,7 +3,7 @@ from keras.models import Sequential
 from keras.layers import Dense
 from keras.wrappers.scikit_learn import KerasRegressor
 import matplotlib.pyplot as plt
-from numpy import corrcoef
+import numpy
 
 datos=load_boston(return_X_y=False)
 #print(datos.feature_names)
@@ -30,7 +30,7 @@ def viewer():
     plt.show()
 
 
-set_epochs=[50, 100, 150, 200, 250, 300, 350, 400, 450, 500]
+set_epochs=numpy.arange(start=50,stop=501,step=50)
 
 coefCorrel=[]
 for i in set_epochs:
@@ -39,7 +39,7 @@ for i in set_epochs:
     estimator.fit(X_data, y_data, verbose=False)
     pronostico=estimator.predict(X_data)
     viewer()
-    coefCorrel.append(corrcoef(x=y_data, y=pronostico)[0,1])
+    coefCorrel.append(numpy.corrcoef(x=y_data, y=pronostico)[0,1])
 
 posiciones=[i for i in range(len(set_epochs))]
 fig,ax=plt.subplots()
