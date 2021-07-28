@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 #import pprint
 import pandas
 
+#read in data
 datos=load_boston(return_X_y=False)
 #print(datos.feature_names)
 #print(datos.DESCR)
